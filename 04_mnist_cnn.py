@@ -26,8 +26,9 @@ test_ds  = datasets.MNIST(root="./data", train=False, download=True, transform=t
 
 # DataLoader turns a dataset into an iterator that gives batches of images.
 # batch_size: how many images per step. shuffle=True mixes data each epoch.
-train_loader = DataLoader(train_ds, batch_size=128, shuffle=True, num_workers=2, pin_memory=True)
-test_loader  = DataLoader(test_ds,  batch_size=256, shuffle=False, num_workers=2, pin_memory=True)
+# Increased batch size to 256 for training and 512 for testing for efficiency with RTX A4000.
+train_loader = DataLoader(train_ds, batch_size=256, shuffle=True, num_workers=2, pin_memory=True)
+test_loader  = DataLoader(test_ds,  batch_size=512, shuffle=False, num_workers=2, pin_memory=True)
 
 # --------------------
 # Model (tiny CNN)
